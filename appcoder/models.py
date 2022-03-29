@@ -3,27 +3,30 @@ from django.db import models
 # Create your models here.
 
 
-class Pasajero(models.Model):
+class Viajes(models.Model):
+   
+    destino = models.CharField( max_length=100)
+    pais = models.CharField(primary_key=True,max_length=100)
+    año = models.IntegerField()
 
-    nombre = models.CharField( max_length=50)
-    apellido = models.CharField(max_length=50)
-    pasaporte = models.CharField(primary_key=True,max_length=8)
-    n_vuelo = models.IntegerField()
-
-class Vuelo(models.Model):
-
-    empresa = models.CharField(max_length=40)
-    n_vuelo = models.IntegerField(primary_key=True)
-    salida = models.DateField()
-
-class Aeropuerto(models.Model):
-    nombre= models.CharField(max_length=40)
-    pais= models.CharField(max_length=40)
+    def __str__(self) -> str:
+        return f"{self.destino} - {self.pais} | {self. año}"
     
 
-class Equipaje(models.Model):
-    cantidad = models.IntegerField()
-    nom_pasajero = models.CharField(max_length=120)
+class Comidas(models.Model):
+
+    nombre_comida = models.CharField(max_length=100)
+    pais_origen = models.CharField(max_length=100)
+    opinion = models.IntegerField()
+
+class Montanas(models.Model):
+    nombre = models.CharField(max_length=100)
+    ubicacion = models.CharField(max_length=100)
+    dificultad= models.IntegerField()
+
+    
+
+
 
 
     

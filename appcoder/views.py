@@ -1,21 +1,56 @@
+from pyexpat import model
+from re import template
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader, Template, Context
+from appcoder.models import *
+
+#vista basadas en clases
+
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView , UpdateView, DeleteView
+
+class ViajeLista(ListView):
+
+    model = Viajes
+    template_name = 'appcoder/viajes_list.html'
+
+class ViajeDetalle(DetailView):
+
+    model = Viajes
+    template_name = 'appcoder/viaje_detalle.html'
+
+class CrearViaje(CreateView):
+    model = Viajes
+    success_url ='appcoder/viajes/list'
+    field = ['destino','pais','año'] 
+
+class UpdateViaje(UpdateView):
+    model = Viajes
+    success_url ='appcoder/viajes/list'
+    field = ['destino','pais','año'] 
+
+class DeleteViaje(DeleteView):
+    model = Viajes
+    success_url ='appcoder/viajes/list'
+     
 
 
 # Create your views here.
 
 def Inicio(request):
-    return render(request,'appcoder\index.html')
+    return render(request,'appcoder/index.html')
 
-def Pasajero(request):
-    return render(request,'appcoder\pasajero.html')
+def Viajes(request):
+    return render(request,'appcoder/blogpost.html')
 
-def Vuelo(request):
-    return HttpResponse('Vista Vuelo')
+def Comidas(request):
+    return HttpResponse('Vista Comida')
 
-def Aeropuerto(request):
-    return HttpResponse('Vista Aeropuerto')
+def Montanas(request):
+    return HttpResponse('Vista Montanas')
 
-def Equipaje(request):
-    return HttpResponse('Vista Equipaje')
+
+def Formulario(request):
+    return render(request, 'appcoder/formularios.html')

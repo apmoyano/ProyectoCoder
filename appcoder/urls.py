@@ -3,8 +3,14 @@ from django.urls import path
 from appcoder.views import Inicio
 from appcoder.views import *
 
-urlpatterns = [path('',Inicio),
-path('pasajero/', Pasajero, name="Pasajero"),
-path('aeropuerto/', Aeropuerto),
-path('vuelo/', Vuelo),
+urlpatterns = [path('',Inicio, name= "inicio"),
+path('viajes/', Viajes , name="viajes"),
+path('comidas/',Comidas, name="comida"),
+path('montanas/', Montanas , name="montana"),
+path('formulario',Formulario,name="formulario"),
+path("viajes/list",ViajeLista.as_view(), name= "viaje_list"),
+path("<pk>",ViajeDetalle.as_view(), name= "viaje_detail"),
+path("nuevo/",CrearViaje.as_view(), name= "viaje_create"),
+path("borrar/<pk>",DeleteViaje.as_view(), name= "viaje_delete"),
+path("editar/<pk>",UpdateViaje.as_view(), name= "viaje_update"),
 ]
