@@ -1,6 +1,6 @@
 {% extends 'appcoder/padre.html' %}
 
-{% block "main_content"%}
+{% block main_content %}
 
 {%  load  static%}
  <body>
@@ -42,7 +42,7 @@
     {% endif %}
         
 
-    <form action="/appcoder/blogviajes/" method="POST" class="form-group " >
+    <form action="/appcoder/viajes/" method="POST" class="form-group " >
         {% csrf_token %}
         <h4>Agregar Viajes</h4>
         <table class="table">
@@ -51,11 +51,32 @@
 
         <input type="submit" value="Cargar Viaje" class="btn btn-primary">
     </form>
+</div>
+
+
+
+<div class="container mt-5">
+    <table class="table" center>
+        <thead >
+            <tr>
+                <th>Destino</th>
+                <th>Pais</th>
+                <th>Año</th>
+        
+            </tr>
+        </thead>
+        <tbody>
+                {% for viaje in Viajes %}
+                <tr>
+                <td>{{viaje.destino}}</td>
+                <td>{{viaje.pais}}</td>
+                <td>{{viaje.anio}}</td>
+                </tr> 
+                {% endfor %}
+        </tbody>
+    </table>
+
 
 </div>
-<form action="/appcoder/blogviajes/" method="get"></form>
-<input type="button" action= value="Cargar Viaje">
-     
-    
-{% endblock "main_content"%}
 
+{% endblock main_content %}

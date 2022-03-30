@@ -4,7 +4,7 @@ class ViajesFormulario(forms.Form):
 
     destino = forms.CharField()
     pais= forms.CharField()
-    año= forms.IntegerField()
+    anio= forms.IntegerField()
 
 class ComidasFormulario(forms.Form):
 

@@ -41,28 +41,36 @@ class DeleteViaje(DeleteView):
 def Inicio(request):
     return render(request,'appcoder/index.html')
 
-def Comidas(request):
-    return HttpResponse('Vista Comida')
-
-def Montanas(request):
-    return HttpResponse('Vista Montanas')
-
-def Viajes(request):
-    titulo = 'Viajes'
+def Viaje(request):
+    
     viajes= Viajes.objects.all()
     if request.method == 'POST':
-        formulario = ViajesFormulario(request.POST)
+        viaje = ViajesFormulario(request.POST)
         
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            viaje= Viajes(data['destino'],data['pais'],data['año'])
-            
-            viaje.save()
+        if viaje.is_valid():
+            data = viaje.cleaned_data
+            viaje_nuevo= Viajes(data['destino'],data['pais'],data['anio'])
+            viaje_nuevo.save()
 
-            formulario = ViajesFormulario()
-            return render(request, 'appcoder/blogviajes.html', {'formulario':formulario,'viajes':viajes})
+        
+            return render(request, 'appcoder/blogviajes.html')
             
     else:
-        formulario = ViajesFormulario()
+        viaje_form = ViajesFormulario()
 
-        return render(request, 'appcoder/blogviajes.html', {'titulo':titulo,'formulario':formulario,'viajes':viajes})
+        return render(request, 'appcoder/blogviajes.html',{'formulario':viaje_form})
+
+
+def buscarViaje(request):
+    
+    data = request.GET['destino']                     
+   
+    print(data)         
+    
+    if data:
+        viaje = Viajes.objects.filter(destino=data) 
+         
+        return render (request, 'appcoder/buscarViaje.html', {'viaje':viaje[0], "id": data})
+        
+
+    return render(request, 'appcoder/buscarViaje.html')
