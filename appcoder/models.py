@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class Viajes(models.Model):
    
     destino = models.CharField( primary_key=True,max_length=100)

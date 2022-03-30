@@ -1,8 +1,7 @@
-from pyexpat import model
-from re import template
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader, Template, Context
+from appcoder.forms import *
 from appcoder.models import *
 
 #vista basadas en clases
@@ -42,15 +41,28 @@ class DeleteViaje(DeleteView):
 def Inicio(request):
     return render(request,'appcoder/index.html')
 
-def Viajes(request):
-    return render(request,'appcoder/blogpost.html')
-
 def Comidas(request):
     return HttpResponse('Vista Comida')
 
 def Montanas(request):
     return HttpResponse('Vista Montanas')
 
+def Viajes(request):
+    titulo = 'Viajes'
+    viajes= Viajes.objects.all()
+    if request.method == 'POST':
+        formulario = ViajesFormulario(request.POST)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            viaje= Viajes(data['destino'],data['pais'],data['año'])
+            
+            viaje.save()
 
-def Formulario(request):
-    return render(request, 'appcoder/formularios.html')
+            formulario = ViajesFormulario()
+            return render(request, 'appcoder/blogviajes.html', {'formulario':formulario,'viajes':viajes})
+            
+    else:
+        formulario = ViajesFormulario()
+
+        return render(request, 'appcoder/blogviajes.html', {'titulo':titulo,'formulario':formulario,'viajes':viajes})
