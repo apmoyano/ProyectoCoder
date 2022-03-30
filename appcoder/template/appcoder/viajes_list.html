@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de pasajeros</title>
+    <title>Lista de viajes</title>
 </head>
-<body style="background-color: cornflowerblue;">
-
-    <h1> Viajes </h1>
-
+<body>
+    <h1>Viajes de Agustin</h1>
     <ul>
         {% for viajes in object_list %}
          <li> 
-             <p>Nombre: {{Viajes.destino}}</p>
+             <p>Nombre: {{viajes.destino}}</p>
              <p>
-                <a href="{% url 'viaje_detail' Viaje.destino %}">Detalle</a>
-                <a href="{% url 'viaje_delete' Viaje.destino %}">Eliminar</a>
-                <a href="{% url 'viaje_update' Viaje.destino %}">Actualizar</a>
+                <a href="{% url 'viaje_detail' viajes.destino %}">Detalle</a>
+                <a href="{% url 'viaje_update' viajes.destino %}">Actualizar</a>
+                <a href="{% url 'viaje_delete' viajes.destino %}">Eliminar</a>
             
             </p>
          </li>
 
         {% endfor %}
 
-
-
-
     </ul>
-    
+
+    <p>
+        <a href="{% url 'viaje_create' %}">Agregar Curso</a>
+    </p>
 </body>
 </html>

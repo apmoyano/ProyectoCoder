@@ -19,21 +19,21 @@ class ViajeLista(ListView):
 class ViajeDetalle(DetailView):
 
     model = Viajes
-    template_name = 'appcoder/viaje_detalle.html'
+    template_name = 'appcoder/viajes_detalle.html'
 
 class CrearViaje(CreateView):
     model = Viajes
-    success_url ='appcoder/viajes/list'
-    field = ['destino','pais','año'] 
+    success_url ='/appcoder/viajes/list'
+    fields = ['destino','pais','año'] 
 
 class UpdateViaje(UpdateView):
     model = Viajes
-    success_url ='appcoder/viajes/list'
-    field = ['destino','pais','año'] 
+    success_url ='/appcoder/viajes/list'
+    fields = ['destino'] 
 
 class DeleteViaje(DeleteView):
     model = Viajes
-    success_url ='appcoder/viajes/list'
+    success_url ='/appcoder/viajes/list'
      
 
 

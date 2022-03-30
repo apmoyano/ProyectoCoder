@@ -5,8 +5,8 @@ from django.db import models
 
 class Viajes(models.Model):
    
-    destino = models.CharField( max_length=100)
-    pais = models.CharField(primary_key=True,max_length=100)
+    destino = models.CharField( primary_key=True,max_length=100)
+    pais = models.CharField(max_length=100)
     año = models.IntegerField()
 
     def __str__(self) -> str:
