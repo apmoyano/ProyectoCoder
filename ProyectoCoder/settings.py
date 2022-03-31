@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+c3n620*7n+rdc(h0d7!0bv6)c37v8xnbmw)6#kz71u99%2lgp'
+SECRET_KEY = 'django-insecure-16mampp$m(y71%g3ubn)s4=qm3qg-)(s8ig!ane2i-yqu+07^p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'appcoder',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ProyectoCoder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"C:\Users\agus_\Documents\AGUSTIN\PYTHON\Carpeta-GIT\ProyectoCoder\appcoder\template"],
+        'DIRS': [r'C:\Users\agus_\Documents\AGUSTIN\PYTHON\BLOG\ProyectoCoder\blog\template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
